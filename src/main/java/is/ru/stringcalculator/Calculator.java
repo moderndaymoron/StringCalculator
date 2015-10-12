@@ -6,6 +6,10 @@ public class Calculator {
 			if(text.isEmpty()){
 				return 0;
 			}
+			else if(text.contains(",")){
+				String[] str = text.split(",");
+				return Integer.parseInt(str[0]) + Integer.parseInt(str[1]);
+			}
 			else{
 				return 1;
 			}
