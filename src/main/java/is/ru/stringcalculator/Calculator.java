@@ -15,7 +15,7 @@ public class Calculator {
 					sum += Integer.parseInt(str[i]);
 				}
 
-				return sum;
+				return returnSum(str);
 			}
 
 			else if(text.contains(",") | text.contains("\\n")){
@@ -31,5 +31,14 @@ public class Calculator {
 			else{
 				return Integer.parseInt(text);
 			}
+	}
+
+	private static int returnSum(String[] arr){
+		int sum = 0;
+		for (int i = 0; i < arr.length; i++){
+			sum += Integer.parseInt(arr[i]);
+		}
+
+		return sum;
 	}
 }
