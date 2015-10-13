@@ -38,4 +38,15 @@ public class CalculatorTest {
 	public void testDifferentDelimeter(){
 		assertEquals(3, Calculator.add("//-\n1-2"));
 	}
+
+	@Test
+	public void testNegativeNumber(){
+		try{
+				Calculator.add("2,-4,3,-5");
+		}catch(RuntimeException ex){
+			assertEquals("Negatives are not allowed:-4,-5", ex.getMessage());
+		}
+
+
+	}
 }

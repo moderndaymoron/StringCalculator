@@ -6,26 +6,20 @@ public class Calculator {
 			if(text.isEmpty()){
 				return 0;
 			}
+			else if(text.matches("(.*)-[1-9](.*)")){
+				throw new RuntimeException("Negatives are not allowed:" + getNegatives(text));
+			}
 
 			else if(text.startsWith("//")){
 				String newStr = text.substring(4);
 				String[] str = newStr.split(text.substring(2,3));
-				int sum = 0;
-				for (int i = 0; i < str.length; i++){
-					sum += Integer.parseInt(str[i]);
-				}
 
 				return returnSum(str);
 			}
 
 			else if(text.contains(",") | text.contains("\\n")){
 				String[] str = text.split("[\\W]");
-				int sum = 0;
-				for (int i = 0; i < str.length; i++){
-					sum += Integer.parseInt(str[i]);
-				}
-
-				return sum;
+				return returnSum(str);
 			}
 
 			else{
@@ -40,5 +34,19 @@ public class Calculator {
 		}
 
 		return sum;
+	}
+
+	private static String getNegatives(String text){
+		StringBuilder sb = new StringBuilder("");
+		for(int i = 0; i < text.length(); i++){
+			if(text.charAt(i) == '-'){
+						if(!(sb.toString().equals(""))){
+							sb.append(',');
+						}
+						sb.append('-');
+						sb.append(text.charAt(i +1));
+			}
+		}
+		return sb.toString();
 	}
 }
