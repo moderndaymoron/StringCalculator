@@ -43,10 +43,14 @@ public class CalculatorTest {
 	public void testNegativeNumber(){
 		try{
 				Calculator.add("2,-4,3,-5");
-		}catch(RuntimeException ex){
+		}
+		catch(RuntimeException ex){
 			assertEquals("Negatives are not allowed:-4,-5", ex.getMessage());
 		}
+	}
 
-
+	@Test
+	public void testIgnoreGreaterThenThousand(){
+			assertEquals(2, Calculator.add("1001,2"));
 	}
 }

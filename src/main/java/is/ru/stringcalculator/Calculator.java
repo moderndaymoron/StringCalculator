@@ -2,6 +2,7 @@ package is.ru.stringcalculator;
 import java.io.*;
 public class Calculator {
 
+	final static int GREATESTNUMBER = 1000;
 	public static int add(String text){
 			if(text.isEmpty()){
 				return 0;
@@ -30,7 +31,9 @@ public class Calculator {
 	private static int returnSum(String[] arr){
 		int sum = 0;
 		for (int i = 0; i < arr.length; i++){
-			sum += Integer.parseInt(arr[i]);
+			if(Integer.parseInt(arr[i]) <= GREATESTNUMBER){
+					sum += Integer.parseInt(arr[i]);
+			}
 		}
 
 		return sum;
