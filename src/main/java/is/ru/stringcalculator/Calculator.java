@@ -12,10 +12,8 @@ public class Calculator {
 			}
 
 			else if(text.startsWith("//")){
-				String newStr = text.substring(4);
-				String[] str = newStr.split(text.substring(2,3));
-
-				return returnSum(str);
+				String delimeter = getDelimeter(text);
+				return returnSum(splitString(text, delimeter));
 			}
 
 			else if(text.contains(",") | text.contains("\\n")){
@@ -31,6 +29,7 @@ public class Calculator {
 	private static int returnSum(String[] arr){
 		int sum = 0;
 		for (int i = 0; i < arr.length; i++){
+			if(arr[i].equals(""))continue;
 			if(Integer.parseInt(arr[i]) <= GREATESTNUMBER){
 					sum += Integer.parseInt(arr[i]);
 			}
@@ -51,5 +50,26 @@ public class Calculator {
 			}
 		}
 		return sb.toString();
+	}
+	private static String getDelimeter(String text){
+		StringBuilder sb = new StringBuilder();
+		for(int i = 2; text.charAt(i) != '\n'; i++){
+			if(text.charAt(i) == '?' || text.charAt(i) == '*'
+			|| text.charAt(i) == '+'){
+				sb.append("[");
+				sb.append(text.charAt(i));
+				sb.append("]*");
+				return sb.toString();
+			}
+			sb.append(text.charAt(i));
+		}
+		return sb.toString();
+	}
+
+	private static String[] splitString(String text, String del){
+		int i = 0;
+		while(text.charAt(i) != '\n'){i++;}
+		String newString = text.substring(i + 1);
+		return newString.split(del);
 	}
 }
