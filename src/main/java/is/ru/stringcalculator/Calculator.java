@@ -53,12 +53,14 @@ public class Calculator {
 	}
 	private static String getDelimeter(String text){
 		StringBuilder sb = new StringBuilder();
-		sb.append("[");
+
 		for(int i = 2; text.charAt(i) != '\n'; i++){
 					sb.append(text.charAt(i));
+					if(text.charAt(i) == ']'){
+						sb.append("|");
+					}
 			}
-			sb.append("]");
-		
+
 		return sb.toString();
 	}
 

@@ -56,6 +56,11 @@ public class CalculatorTest {
 
 	@Test
 	public void testAnyLengthDelimeter(){
-		assertEquals(6, Calculator.add("//***\n1***2***3"));
+		assertEquals(6, Calculator.add("//[***]\n1***2***3"));
+	}
+
+	@Test
+	public void testAllowMultipleParameters(){
+		assertEquals(6, Calculator.add("//[*][%]\n1*2%3"));
 	}
 }
