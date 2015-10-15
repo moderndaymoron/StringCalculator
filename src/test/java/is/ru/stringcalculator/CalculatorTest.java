@@ -63,4 +63,9 @@ public class CalculatorTest {
 	public void testAllowMultipleParameters(){
 		assertEquals(6, Calculator.add("//[*][%]\n1*2%3"));
 	}
+
+	@Test
+	public void testAllowMultipleParametersOfAnyLength(){
+		assertEquals(216, Calculator.add("//[***][%%]\n1***212%%3"));
+	}
 }

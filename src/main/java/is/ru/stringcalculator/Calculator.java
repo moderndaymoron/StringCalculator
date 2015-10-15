@@ -56,7 +56,7 @@ public class Calculator {
 
 		for(int i = 2; text.charAt(i) != '\n'; i++){
 					sb.append(text.charAt(i));
-					if(text.charAt(i) == ']'){
+					if(text.charAt(i) == ']' && text.charAt(i+1) != '\n'){
 						sb.append("|");
 					}
 			}
